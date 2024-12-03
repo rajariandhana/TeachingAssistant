@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-100 flex flex-col p-4 items-center justify-center gap-y-4">
+    <div class="flex flex-col gap-y-0 items-center">
+        <h1 class="text-xl font-bold">Quick Race</h1>
+        <span class="text-sm text-zinc-500 mb-2">by: <a href="https://github.com/rajariandhana">github.com/rajariandhana</a></span>
+        <img class="h-44 rounded-md shadow-md" src="quickrace-thumbnail.png" alt="">
+    </div>
+    <div class="bg-white rounded-md shadow-md px-4 py-2 justify-between max-w-[600px]">
+        <h2 class="font-bold">Description</h2>
+        <p class="text-justify">
+            In minecraft we can fly using the elytra with a rocket as fuel. Given 3 coordinates 𝐴, 𝐵,
+            and 𝐶 in a 3d space, I must fly starting from point 𝐴 to 𝐶 where I can stop (not a must) at
+            point 𝐵. There are 𝑟𝐴 number of rockets that I can get at point 𝐴 and 𝑟𝐵 number of
+            rockets that I can get at point 𝐵. The maximum distance that can be traveled using a
+            rocket is 𝑅𝐷. For example if 𝑅𝐷 is 100 and I have 3 rockets then I can travel a maximum
+            of 300, if I want to travel 50 then I can use 1 rocket and have 2 rockets remaining.
+        </p>
+    </div>
+    <div class="bg-white rounded-md shadow-md px-4 py-2 justify-between max-w-[600px]">
+        <h2 class="font-bold">Input Format</h2>
+        <p class="text-justify">
+            Three lines which consists of coordinate at 𝑥, 𝑦, and 𝑧 axis in that order. First line is for
+            point 𝐴, second line is point 𝐵, and third line is point 𝐶. Last line is 𝑟𝐴, 𝑟𝐵, and 𝑅𝐷.
+        </p>
+    </div>
+    <div class="bg-white rounded-md shadow-md px-4 py-2 justify-between max-w-[600px]">
+        <h2 class="font-bold">Output Format</h2>
+        <p class="text-justify">
+            If I can fly from A to C without stopping then output “NAH ID WIN, NO NEED TO
+            STOP”, but if I stop at B and can still reach C then output “HHM BETTER TAKE ROCKET,
+            STILL CAN WIN”. If I cannot reach C even when taking rockets at B then output “GIVE
+            UP ALREADY, MINING BETTER”.            
+        </p>
+    </div>
+    <div class="bg-white rounded-md shadow-md px-4 py-2 justify-between w-full max-w-[600px]">
+        <h2 class="font-bold">Input Format</h2>
+        <p class="text-justify">
+
+        </p>
+        <ul class="list-disc ml-6">
+            <li>𝑥, 𝑧 ∈ [− 2147483648, 2147483647]</li>
+            <li>𝑧 ∈ [− 64, 320]</li>
+            <li>𝑟𝐴, 𝑟𝐵 ∈ [0, 1000]</li>
+            <li>𝑅𝐷 ∈ [10, 1000]</li>
+            <li>Point 𝐴 ≠ 𝐵, point 𝐴 ≠ 𝐶, point 𝐵 ≠ 𝐶</li>
+        </ul>
+    </div>
+</body>
+</html>
