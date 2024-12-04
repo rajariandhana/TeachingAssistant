@@ -7,7 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="bg-gray-100 flex flex-col p-4 items-center justify-center gap-y-4">
+<body x-data="{ notification: false }" class="bg-gray-100 flex flex-col p-4 items-center justify-center gap-y-4 text-gray-900">
+    <div x-show="notification" class="fixed top-4 right-4 z-50 flex items-center justify-between px-4 py-2 rounded-lg shadow-lg border-2 border-green-700 bg-green-200 text-green-700">
+        Copied successfully
+        <button @click="notification = false" class="ml-2">X</button>
+    </div>  
     <div class="flex flex-col gap-y-0 items-center">
         <h1 class="text-xl font-bold">Quick Race</h1>
         <span class="text-sm text-zinc-500 mb-2">by: <a href="https://github.com/rajariandhana">github.com/rajariandhana</a></span>
@@ -54,5 +58,113 @@
             <li>Point 𝐴 ≠ 𝐵, point 𝐴 ≠ 𝐶, point 𝐵 ≠ 𝐶</li>
         </ul>
     </div>
+
+    <div class="bg-white rounded-md shadow-md px-4 py-2 justify-between w-full max-w-[600px]">
+        <h2 class="font-bold">Example 1</h2>
+        <div class="flex flex-col border-2 border-gray-900 divide-y-2 divide-gray-900">
+            <span class="px-2 py-1 bg-zinc-200 w-full flex font-semibold items-center gap-x-2">
+                Input
+                <button @click="notification=true" onclick="CopyInput('input1')" class="text-sm px-2 py-1 bg-white rounded-md border-2 border-gray-900 hover:bg-gray-900 hover:text-white">COPY</button>
+            </span>
+            <pre  class="px-2 py-1 overflow-auto text-left">
+<code id="input1">
+
+</code></pre>
+            <span class="px-2 py-1 bg-zinc-200 w-full flex font-semibold">Output</span>
+            <pre  class="px-2 py-1 overflow-auto text-left">
+<code class="">NAH ID WIN, NO NEED TO STOP</code></pre>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-md shadow-md px-4 py-2 justify-between w-full max-w-[600px]">
+      <h2 class="font-bold">Example 2</h2>
+      <div class="flex flex-col border-2 border-gray-900 divide-y-2 divide-gray-900">
+          <span class="px-2 py-1 bg-zinc-200 w-full flex font-semibold items-center gap-x-2">
+              Input
+              <button @click="notification=true" onclick="CopyInput('input2')" class="text-sm px-2 py-1 bg-white rounded-md border-2 border-gray-900 hover:bg-gray-900 hover:text-white">COPY</button>
+          </span>
+          <pre  class="px-2 py-1 overflow-auto text-left">
+<code id="input2">
+
+</code></pre>
+          <span class="px-2 py-1 bg-zinc-200 w-full flex font-semibold">Output</span>
+          <pre  class="px-2 py-1 overflow-auto text-left">
+<code class="">HHM BETTER TAKE ROCKET, STILL CAN WIN</code></pre>
+      </div>
+  </div>
+
+  <div class="bg-white rounded-md shadow-md px-4 py-2 justify-between w-full max-w-[600px]">
+    <h2 class="font-bold">Example 3</h2>
+    <div class="flex flex-col border-2 border-gray-900 divide-y-2 divide-gray-900">
+        <span class="px-2 py-1 bg-zinc-200 w-full flex font-semibold items-center gap-x-2">
+            Input
+            <button @click="notification=true" onclick="CopyInput('input3')" class="text-sm px-2 py-1 bg-white rounded-md border-2 border-gray-900 hover:bg-gray-900 hover:text-white">COPY</button>
+        </span>
+        <pre  class="px-2 py-1 overflow-auto text-left">
+<code id="input3">
+
+</code></pre>
+        <span class="px-2 py-1 bg-zinc-200 w-full flex font-semibold">Output</span>
+        <pre  class="px-2 py-1 overflow-auto text-left">
+<code class="">GIVE UP ALREADY, MINING BETTER</code></pre>
+    </div>
+</div>
+    <script>
+const input1=`100 100 100
+250 250 250
+800 800 800
+20 10 100
+`
+const input2=`100 100 100
+250 250 250
+800 800 800
+3 10 100
+`
+const input3=`100 100 100
+250 250 250
+800 800 800
+3 1 100
+`
+        function Init(){
+          document.getElementById('input1').textContent=input1;
+          document.getElementById('input2').textContent=input2;
+          document.getElementById('input3').textContent=input3;
+        }
+        Init();
+        function CopyInput(input) {
+            let toCopy;
+            if (input == 'input1'){
+              toCopy=input1
+            }
+            else if (input == 'input2'){
+              toCopy=input2
+            }
+            else if (input == 'input3'){
+              toCopy=input3
+            }
+            // Try using the modern Clipboard API first
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(toCopy).then(() => {
+                // alert('Text copied to clipboard!');
+              }).catch(err => {
+                // console.error('Failed to copy text: ', err);
+              });
+            } else {
+              // Fallback to execCommand if Clipboard API isn't available
+              const textarea = document.createElement('textarea');
+              textarea.value = input1;
+        
+              // Append the textarea to the body (it needs to be part of the DOM to be copied)
+              document.body.appendChild(textarea);
+        
+              // Select the content of the textarea
+              textarea.select();
+              textarea.setSelectionRange(0, 99999); // For mobile devices
+        
+              // Execute the copy command
+              document.body.removeChild(textarea);
+            }
+          }
+        </script>
 </body>
 </html>
